@@ -7,10 +7,10 @@ describe('Course Reducer', () => {
     // arrange
     const initialState = [
       {title: 'A'},
-      {title: 'B'}
+      {title: 'C'}
     ];
 
-    const newCourse = {title: 'C'};
+    const newCourse = {title: 'B'};
 
     const action = actions.createCourseSuccess(newCourse);
 
@@ -20,8 +20,8 @@ describe('Course Reducer', () => {
     //assert
     expect(newState.length).toEqual(3);
     expect(newState[0].title).toEqual('A');
-    expect(newState[1].title).toEqual('B');
-    expect(newState[2].title).toEqual('C');
+    expect(newState[1].title).toEqual('C');
+    expect(newState[2].title).toEqual('B');
   });
 
   it('should update course when passed UPDATE_COURSE_SUCCESS', () => {
