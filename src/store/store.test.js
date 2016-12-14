@@ -31,19 +31,12 @@ describe('Store', function() {
 
   it('Should handle updating a course', function() {
     //arrange
-    const course = {
-      id: 1,
-      title: "Clean Code"
-    };
-    const course2 = {
-      id: 2,
-      title: "Second Course"
-    };
-    const initialCourses = [course, course2];
+    const setupData = setupStoreWithCourses();
 
-    const course1Updated = Object.assign({}, course, {title: course.title + " (updated)"});
+    const course1 = setupData.courses[0];
+    const course1Updated = Object.assign({}, course1, {title: course1.title + " (updated)"});
      
-    const state = Object.assign(initialState, {courses: initialCourses});
+    const state = Object.assign(initialState, {courses: setupData.courses});
     const store = createStore(rootReducer, state);
     
     // act
@@ -55,4 +48,42 @@ describe('Store', function() {
     const actualUpdated = store.getState().courses.filter(course => course.id == 1)[0]; 
     expect(actualUpdated).toEqual(course1Updated); // item 1 should have changed
   });
+
+   it('Should handle deleting a course', function() {
+    //arrange
+    const setupData = setupStoreWithCourses();
+
+    const course1 = setupData.courses[0];
+         
+    const state = Object.assign(initialState, {courses: setupData.courses});
+    const store = createStore(rootReducer, state);
+    
+    // act
+    const deleteCourseAction = courseActions.deleteCourseSuccess(course1);
+    store.dispatch(deleteCourseAction);
+
+    // assert
+    expect(store.getState().courses.length).toEqual(1); // there should be two items
+  });
+
+  function setupStoreWithCourses()
+  {
+        const course = {
+      id: 1,
+      title: "Clean Code"
+    };
+    const course2 = {
+      id: 2,
+      title: "Second Course"
+    };
+    const initialCourses = [course, course2];
+     
+    const state = Object.assign(initialState, {courses: initialCourses});
+    const store = createStore(rootReducer, state);
+
+    return {
+      store: store,
+      courses: initialCourses
+    };
+  }
 });

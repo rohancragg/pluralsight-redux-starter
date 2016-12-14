@@ -20,6 +20,12 @@ export default function courseReducer(state = initialState.courses, action) {
         Object.assign({}, action.course)
       ];
 
+      case types.DELETE_COURSE_SUCCESS:
+      // make a new copy of the list of courses, removing the deleted course
+      return [
+        ...state.filter(course => course.id !== action.course.id)
+      ];
+
     default:
       return state;
   }
