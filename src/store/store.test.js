@@ -63,7 +63,7 @@ describe('Store', function() {
     store.dispatch(deleteCourseAction);
 
     // assert
-    expect(store.getState().courses.length).toEqual(1); // there should be two items
+    expect(store.getState().courses.length).toEqual(1); // there should be only one item remaining
   });
 
   function setupStoreWithCourses()
