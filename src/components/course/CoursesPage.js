@@ -10,6 +10,7 @@ export class CoursesPage extends React.Component {
     super(props, context);
 
     this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
+    this.deleteCourse = this.deleteCourse.bind(this);
   }
 
   courseRow(course, index) {
@@ -18,6 +19,10 @@ export class CoursesPage extends React.Component {
 
   redirectToAddCoursePage() {
     browserHistory.push('/course');
+  }
+
+  deleteCourse(course) {
+    console.log(course);
   }
 
   render() {
@@ -30,7 +35,10 @@ export class CoursesPage extends React.Component {
                value="Add Course"
                className="btn btn-primary"
                onClick={this.redirectToAddCoursePage}/>
-        <CourseList courses={courses} deleting={false}/>
+        <CourseList 
+          courses={courses} 
+          deleting={false} 
+          onDelete={this.deleteCourse} />
       </div>
     );
   }

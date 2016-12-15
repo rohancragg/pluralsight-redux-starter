@@ -64,7 +64,7 @@ describe('Course Reducer', () => {
 
     // assert
     expect(newState.length).toEqual(2);
-    expect(deletedCourse).toNotExist
+    expect(deletedCourse).toNotExist;
     expect(untouchedCourse.title).toEqual('A');
   });
 });
