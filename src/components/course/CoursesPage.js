@@ -8,6 +8,7 @@ import {browserHistory} from 'react-router';
 export class CoursesPage extends React.Component {
   constructor(props, context) {
     super(props, context);
+
     this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
   }
 
@@ -29,7 +30,7 @@ export class CoursesPage extends React.Component {
                value="Add Course"
                className="btn btn-primary"
                onClick={this.redirectToAddCoursePage}/>
-        <CourseList courses={courses}/>
+        <CourseList courses={courses} deleting={false}/>
       </div>
     );
   }

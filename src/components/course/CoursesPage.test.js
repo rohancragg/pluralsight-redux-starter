@@ -9,7 +9,7 @@ describe ('Courses Page', () => {
   let browserHistorySpy;
 
   beforeEach(() => {
-    router.browserHistory = { push: ()=>{} };
+    router.browserHistory = { push: ()=>{} }; // eslint-disable-line import/namespace
     browserHistorySpy = expect.spyOn(router.browserHistory, 'push');
   });
 
@@ -26,7 +26,7 @@ describe ('Courses Page', () => {
     };
     const wrapper = mount(<CoursesPage {...props}/>);
 
-    const addButton = wrapper.find('input').last();
+    const addButton = wrapper.find('input').first();
     expect(addButton.prop('type')).toBe('submit');
     addButton.simulate('click');
 
@@ -34,6 +34,17 @@ describe ('Courses Page', () => {
     expect(browserHistorySpy.calls.length).toEqual(1);
     expect(browserHistorySpy.calls[0].context).toBe(router.browserHistory);
     expect(browserHistorySpy.calls[0].arguments).toEqual([ '/course' ]);
+    
+  });
+
+  it('', () => {
+    const props = {
+      courses: [{id: '', watchHref: '', title: '', authorId: '', length: '', category: ''}],
+      actions: { deleteCourse: () => { return Promise.resolve(); }
+      }
+    };
+    const wrapper = mount(<CoursesPage {...props}/>);
+
     
   });
 });

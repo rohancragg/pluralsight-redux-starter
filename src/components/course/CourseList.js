@@ -1,7 +1,8 @@
+/*eslint-disable no-console */
 import React, {PropTypes} from 'react';
 import CourseListRow from './CourseListRow';
 
-const CourseList = ({courses}) => {
+const CourseList = ({courses, deleting}) => {
   return (
     <table className="table">
       <thead>
@@ -11,11 +12,12 @@ const CourseList = ({courses}) => {
         <th>Author</th>
         <th>Category</th>
         <th>Length</th>
+        <th>Action</th>
       </tr>
       </thead>
       <tbody>
       {courses.map(course =>
-        <CourseListRow key={course.id} course={course}/>
+        <CourseListRow key={course.id} course={course} deleting={deleting} onDelete={function(course){console.log(course);}}/>
       )}
       </tbody>
     </table>
@@ -23,7 +25,8 @@ const CourseList = ({courses}) => {
 };
 
 CourseList.propTypes = {
-  courses: PropTypes.array.isRequired
+  courses: PropTypes.array.isRequired,
+  deleting: PropTypes.bool.isRequired
 };
 
 export default CourseList;
