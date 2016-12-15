@@ -47,12 +47,12 @@ describe('Store', function() {
     const store = createStore(rootReducer, state);
     
     // act
-    const updateCourseAction = courseActions.updateCourseSuccess(course1Updated)
-    store.dispatch(updateCourseAction)
+    const updateCourseAction = courseActions.updateCourseSuccess(course1Updated);
+    store.dispatch(updateCourseAction);
 
     // assert
-    expect(store.getState().courses.length).toEqual(2) // there should be two items
+    expect(store.getState().courses.length).toEqual(2); // there should be two items
     const actualUpdated = store.getState().courses.filter(course => course.id == 1)[0]; 
     expect(actualUpdated).toEqual(course1Updated); // item 1 should have changed
-  })
+  });
 });
