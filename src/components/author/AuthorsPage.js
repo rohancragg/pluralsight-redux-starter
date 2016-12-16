@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as authorActions from '../../actions/authorActions';
 import AuthorList from './AuthorList';
+import {authorsWithCourseCount} from '../../selectors/selectors';
 import {browserHistory} from 'react-router';
 import toastr from 'toastr';
 
@@ -64,7 +65,7 @@ AuthorsPage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    authors: state.authors
+    authors: authorsWithCourseCount(state.authors, state.courses)
   };
 }
 

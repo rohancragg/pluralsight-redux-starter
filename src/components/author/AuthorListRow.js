@@ -7,9 +7,10 @@ const AuthorListRow = ({author, deleting, onDelete}) => {
       <td><Link to={'/author/' + author.id}>Edit: {author.id}</Link></td>
       <td>{author.firstName}</td>
       <td>{author.lastName}</td>
+      <td>{author.courseCount}</td>
       <td><input
         type="submit"
-        disabled={deleting}
+        disabled={deleting || (author.courseCount > 0)}
         value={deleting ? 'Deleting...' : 'Delete'}
         className="btn btn-primary"
         onClick={function() {onDelete(author);}}/></td>

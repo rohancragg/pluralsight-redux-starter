@@ -6,3 +6,10 @@ export function authorsFormattedForDropdown(authors) {
     };
   });
 }
+
+export function authorsWithCourseCount(authors, courses) {
+  return authors.map(author => {
+    let authorCourses = courses.filter(course => course.authorId == author.id);
+    return Object.assign({}, author, { courseCount: authorCourses.length });
+  });
+}

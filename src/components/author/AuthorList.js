@@ -10,12 +10,13 @@ const AuthorList = ({authors, deleting, onDelete}) => {
         <th>Firstname</th>
         <th>LastName</th>
         <th>Courses</th>
+        <th>&nbsp;</th>
       </tr>
       </thead>
       <tbody>
-      {authors.map(author =>
-      <AuthorListRow key={author.id} author={author} deleting={deleting} onDelete={onDelete}/>
-      )}
+        {authors.map(author =>
+          <AuthorListRow key={author.id} author={author} deleting={deleting} onDelete={onDelete}/>
+        )}
       </tbody>
     </table>
   );
