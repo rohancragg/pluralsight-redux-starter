@@ -42,17 +42,21 @@ export class CoursesPage extends React.Component {
     const {courses} = this.props;
 
     return (
-      <div>
-        <h1>Courses</h1>
-        <input type="submit"
-               value="Add Course"
-               className="btn btn-primary"
-               onClick={this.redirectToAddCoursePage}/>
-        <CourseList 
-          courses={courses} 
-          deleting={this.state.deleting} 
-          onDelete={this.deleteCourse} />
-      </div>
+      <section>
+        <div className="jumbotron">
+          <h1>Courses</h1>
+          <input type="submit"
+                value="Add Course"
+                className="btn btn-primary"
+                onClick={this.redirectToAddCoursePage}/>
+        </div>
+        <div>
+          <CourseList
+            courses={courses}
+            deleting={this.state.deleting}
+            onDelete={this.deleteCourse} />
+        </div>
+      </section>
     );
   }
 }

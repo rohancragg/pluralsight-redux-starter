@@ -1,6 +1,7 @@
 // This component handles the App template used on every page.
 import React, {PropTypes} from 'react';
 import Header from './common/Header';
+import InfoPanel from './common/InfoPanel';
 import {connect} from 'react-redux';
 
 class App extends React.Component {
@@ -11,6 +12,7 @@ class App extends React.Component {
           loading={this.props.loading}
         />
         {this.props.children}
+        <InfoPanel />
       </div>
     );
   }

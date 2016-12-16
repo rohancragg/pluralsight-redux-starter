@@ -5,7 +5,9 @@ import CourseForm from './CourseForm';
 
 function setup(saving) {
   let props = {
-    course: {}, saving: saving, errors: {},
+    course: {},
+    saving: saving,
+    errors: {},
     onSave: () => {},
     onChange: () => {}
   };
@@ -25,8 +27,8 @@ describe('CourseForm via React Test Utils', () => {
   it('renders form and h1', () => {
     const { output } = setup();
     expect(output.type).toBe('form');
-    let [ h1 ] = output.props.children;
-    expect(h1.type).toBe('h1');
+    let [ div ] = output.props.children;
+    expect(div.type).toBe('div');
   });
 
   it('save button is labeled "Save" when not saving', () => {
