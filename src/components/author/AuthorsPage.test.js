@@ -1,11 +1,10 @@
 import React from 'react';
-import expect from 'expect';
 import * as router from 'react-router';
+import expect from 'expect';
 import {mount, shallow} from 'enzyme';
-import {CoursesPage} from './CoursesPage';
+import {AuthorsPage} from './AuthorsPage';
 
-
-describe ('Courses Page', () => {
+describe ('Authors Page', () => {
   let browserHistorySpy;
 
   beforeEach(() => {
@@ -18,13 +17,13 @@ describe ('Courses Page', () => {
     expect.restoreSpies();
   });
 
-  it('SaveButton click will redirect to course page', () => {
+  it('SaveButton click will redirect to Author page', () => {
     const props = {
-      courses: [{id: '', watchHref: '', title: '', authorId: '', length: '', category: ''}],
-      actions: { deleteCourse: () => { return Promise.resolve(); }
+      authors: [{id: 0, firstName: '', lastName: ''}],
+      actions: { deleteAuthor: () => { return Promise.resolve(); }
       }
     };
-    const wrapper = mount(<CoursesPage {...props}/>);
+    const wrapper = mount(<AuthorsPage {...props}/>);
 
     const addButton = wrapper.find('input').first();
     expect(addButton.prop('type')).toBe('submit');
@@ -33,7 +32,6 @@ describe ('Courses Page', () => {
     expect(browserHistorySpy).toHaveBeenCalled();
     expect(browserHistorySpy.calls.length).toEqual(1);
     expect(browserHistorySpy.calls[0].context).toBe(router.browserHistory);
-    expect(browserHistorySpy.calls[0].arguments).toEqual([ '/course' ]);
-
+    expect(browserHistorySpy.calls[0].arguments).toEqual([ '/author' ]);
   });
 });
