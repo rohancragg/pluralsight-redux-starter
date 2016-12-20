@@ -1,3 +1,6 @@
+# Local user settings
+.vscode
+
 # Logs
 logs
 *.log
